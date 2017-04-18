@@ -20,11 +20,11 @@ class TinyproxyCollector(object):
         urllib.request.install_opener(opener)
         response = urllib.request.urlopen('http://{0}'.format(self.stathost))
         values = [float(x) for x in re.findall(b'>(\d+).+td', response.read())]
-        yield GaugeMetricFamily('tinyproxy_open_connections', 'Number of open connections', values[0])
-        yield CounterMetricFamily('tinyproxy_requests', 'Number of requests', values[1])
-        yield CounterMetricFamily('tinyproxy_bad_connections', 'Number of bad connections', values[2])
-        yield CounterMetricFamily('tinyproxy_denied_connections', 'Number of denied connections', values[3])
-        yield CounterMetricFamily('tinyproxy_refused_connections', 'Number of refused connections due to high load', values[4])
+        yield GaugeMetricFamily('tinyproxy_connections_open', 'Number of open connections', values[0])
+        yield CounterMetricFamily('tinyproxy_requests_total', 'Number of requests', values[1])
+        yield CounterMetricFamily('tinyproxy_connections_bad_total', 'Number of bad connections', values[2])
+        yield CounterMetricFamily('tinyproxy_connections_denied_total', 'Number of denied connections', values[3])
+        yield CounterMetricFamily('tinyproxy_connections_refused_total', 'Number of refused connections due to high load', values[4])
 
 def parse_args():
     parser = argparse.ArgumentParser(description='Prometheus exporter for Tinyproxy.')
