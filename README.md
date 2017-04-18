@@ -1,2 +1,2 @@
-# tinyproxy_exporter
-Prometheus exporter for Tinyproxy
+# Tinyproxy exporter
+Prometheus exporter for Tinyproxy, written in Python.

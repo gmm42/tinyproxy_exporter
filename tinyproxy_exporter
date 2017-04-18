@@ -1,0 +1,58 @@
+#!/usr/bin/env python3
+
+import argparse
+import re
+import sys
+import time
+import urllib
+
+from prometheus_client import start_http_server
+from prometheus_client.core import CounterMetricFamily, GaugeMetricFamily, REGISTRY
+
+class TinyproxyCollector(object):
+    def __init__(self, stathost, tinyproxy):
+        self.stathost = stathost
+        self.tinyproxy = tinyproxy
+
+    def collect(self):
+        handler = urllib.request.ProxyHandler({'http': self.tinyproxy})
+        opener = urllib.request.build_opener(handler)
+        urllib.request.install_opener(opener)
+        response = urllib.request.urlopen('http://{0}'.format(self.stathost))
+        values = [float(x) for x in re.findall(b'>(\d+).+td', response.read())]
+        yield GaugeMetricFamily('tinyproxy_open_connections', 'Number of open connections', values[0])
+        yield CounterMetricFamily('tinyproxy_requests', 'Number of requests', values[1])
+        yield CounterMetricFamily('tinyproxy_bad_connections', 'Number of bad connections', values[2])
+        yield CounterMetricFamily('tinyproxy_denied_connections', 'Number of denied connections', values[3])
+        yield CounterMetricFamily('tinyproxy_refused_connections', 'Number of refused connections due to high load', values[4])
+
+def parse_args():
+    parser = argparse.ArgumentParser(description='Prometheus exporter for Tinyproxy.')
+    parser.add_argument(
+        '-l', metavar='LISTEN', default=':9240',
+        help='address on which to expose metrics (default ":9240")'
+    )
+    parser.add_argument(
+        '-s', metavar='STATHOST', default='tinyproxy.stats',
+        help='internal statistics page address (default "tinyproxy.stats")'
+    )
+    parser.add_argument(
+        '-t', metavar='TINYPROXY', default='127.0.0.1:8888',
+        help='tinyproxy address (default "127.0.0.1:8888")'
+    )
+    return parser.parse_args()
+
+def main():
+    try:
+        args = parse_args()
+        addr, port = args.l.split(':')
+        REGISTRY.register(TinyproxyCollector(args.s, args.t))
+        start_http_server(int(port), addr)
+        while True:
+            time.sleep(1)
+    except KeyboardInterrupt:
+        print(' Interrupted')
+        sys.exit(0)
+
+if __name__ == '__main__':
+    main()
