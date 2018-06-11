@@ -7,18 +7,8 @@
     "README.md"
   ],
   "imageSize": 100,
-  "commit": true,
+  "commit": false,
   "contributors": [
-    {
-      "login": "vitorarins",
-      "name": "Vitor Arins",
-      "avatar_url": "https://avatars3.githubusercontent.com/u/1065028?v=4",
-      "profile": "https://github.com/vitorarins",
-      "contributions": [
-        "bug",
-        "code"
-      ]
-    },
     {
       "login": "igzivkov",
       "name": "Igor Živković",
@@ -27,6 +17,16 @@
       "contributions": [
         "code",
         "doc"
+      ]
+    },
+    {
+      "login": "vitorarins",
+      "name": "Vitor Arins",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/1065028?v=4",
+      "profile": "https://github.com/vitorarins",
+      "contributions": [
+        "bug",
+        "code"
       ]
     }
   ]

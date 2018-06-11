@@ -25,7 +25,7 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore -->
-| [<img src="https://avatars3.githubusercontent.com/u/1065028?v=4" width="100px;"/><br /><sub><b>Vitor Arins</b></sub>](https://github.com/vitorarins)<br />[🐛](https://github.com/igzivkov/tinyproxy_exporter/issues?q=author%3Avitorarins "Bug reports") [💻](https://github.com/igzivkov/tinyproxy_exporter/commits?author=vitorarins "Code") | [<img src="https://avatars1.githubusercontent.com/u/1630197?v=4" width="100px;"/><br /><sub><b>Igor Živković</b></sub>](https://github.com/igzivkov)<br />[💻](https://github.com/igzivkov/tinyproxy_exporter/commits?author=igzivkov "Code") [📖](https://github.com/igzivkov/tinyproxy_exporter/commits?author=igzivkov "Documentation") |
+| [<img src="https://avatars1.githubusercontent.com/u/1630197?v=4" width="100px;"/><br /><sub><b>Igor Živković</b></sub>](https://github.com/igzivkov)<br />[💻](https://github.com/igzivkov/tinyproxy_exporter/commits?author=igzivkov "Code") [📖](https://github.com/igzivkov/tinyproxy_exporter/commits?author=igzivkov "Documentation") | [<img src="https://avatars3.githubusercontent.com/u/1065028?v=4" width="100px;"/><br /><sub><b>Vitor Arins</b></sub>](https://github.com/vitorarins)<br />[🐛](https://github.com/igzivkov/tinyproxy_exporter/issues?q=author%3Avitorarins "Bug reports") [💻](https://github.com/igzivkov/tinyproxy_exporter/commits?author=vitorarins "Code") |
 | :---: | :---: |
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
