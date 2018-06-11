@@ -1,6 +1,6 @@
 {
   "projectName": "tinyproxy_exporter",
-  "projectOwner": "Igor Živković",
+  "projectOwner": "igzivkov",
   "repoType": "github",
   "repoHost": "https://github.com",
   "files": [
@@ -16,7 +16,8 @@
       "profile": "https://github.com/vitorarins",
       "contributions": [
         "bug",
-        "code"
+        "code",
+        "doc"
       ]
     }
   ]
