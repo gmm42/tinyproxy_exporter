@@ -1,0 +1,23 @@
+{
+  "projectName": "tinyproxy_exporter",
+  "projectOwner": "Igor Živković",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": true,
+  "contributors": [
+    {
+      "login": "vitorarins",
+      "name": "Vitor Arins",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/1065028?v=4",
+      "profile": "https://github.com/vitorarins",
+      "contributions": [
+        "bug",
+        "code"
+      ]
+    }
+  ]
+}
