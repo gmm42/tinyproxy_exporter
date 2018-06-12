@@ -1,4 +1,5 @@
 # tinyproxy_exporter
+[![Build Status](https://travis-ci.com/igzivkov/tinyproxy_exporter.svg?branch=master)](https://travis-ci.com/igzivkov/tinyproxy_exporter)
 [![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors)
 
 A simple Prometheus exporter for Tinyproxy.
