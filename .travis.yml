@@ -8,11 +8,20 @@ before_install:
 script:
   - |
     ./tinyproxy_exporter &
-    PID=$!
     sleep 1
-    kill $PID
-    sudo rm /usr/share/tinyproxy/stats.html
-    ./tinyproxy_exporter &
-    PID=$!
-    sleep 1
-    kill -15 $PID
+    if [ "$(pidof python3)" ]
+    then
+      kill "$(pidof python3)"
+      sudo rm /usr/share/tinyproxy/stats.html
+      sudo service tinyproxy restart
+      ./tinyproxy_exporter &
+      sleep 1
+      if [ "$(pidof python3)" ]
+      then
+        kill "$(pidof python3)"
+      else
+        exit 1
+      fi
+    else
+      exit 1
+    fi
