@@ -9,6 +9,7 @@ import urllib
 from prometheus_client import start_http_server
 from prometheus_client.core import CounterMetricFamily, GaugeMetricFamily, REGISTRY
 
+
 class TinyproxyCollector(object):
     def __init__(self, stathost, tinyproxy):
         self.stathost = stathost
@@ -19,28 +20,42 @@ class TinyproxyCollector(object):
         opener = urllib.request.build_opener(handler)
         urllib.request.install_opener(opener)
         response = urllib.request.urlopen('http://{0}'.format(self.stathost))
-        values = [float(x) for x in re.findall(b'(?:<td>|: )(\d+)(?:</td>|<br />|\n</p>)', response.read())]
-        yield GaugeMetricFamily('tinyproxy_connections_open', 'Number of open connections', values[0])
-        yield CounterMetricFamily('tinyproxy_requests_total', 'Number of requests', values[1])
-        yield CounterMetricFamily('tinyproxy_connections_bad_total', 'Number of bad connections', values[2])
-        yield CounterMetricFamily('tinyproxy_connections_denied_total', 'Number of denied connections', values[3])
-        yield CounterMetricFamily('tinyproxy_connections_refused_total', 'Number of refused connections due to high load', values[4])
+        values = [
+            float(x) for x in re.findall(
+                b'(?:<td>|: )(\d+)(?:</td>|<br />|\n</p>)', response.read())
+        ]
+        yield GaugeMetricFamily('tinyproxy_connections_open',
+                                'Number of open connections', values[0])
+        yield CounterMetricFamily('tinyproxy_requests_total',
+                                  'Number of requests', values[1])
+        yield CounterMetricFamily('tinyproxy_connections_bad_total',
+                                  'Number of bad connections', values[2])
+        yield CounterMetricFamily('tinyproxy_connections_denied_total',
+                                  'Number of denied connections', values[3])
+        yield CounterMetricFamily(
+            'tinyproxy_connections_refused_total',
+            'Number of refused connections due to high load', values[4])
+
 
 def parse_args():
-    parser = argparse.ArgumentParser(description='Prometheus exporter for Tinyproxy.')
+    parser = argparse.ArgumentParser(
+        description='Prometheus exporter for Tinyproxy.')
     parser.add_argument(
-        '-l', metavar='LISTEN', default=':9240',
-        help='address on which to expose metrics (default ":9240")'
-    )
+        '-l',
+        metavar='LISTEN',
+        default=':9240',
+        help='address on which to expose metrics (default ":9240")')
     parser.add_argument(
-        '-s', metavar='STATHOST', default='tinyproxy.stats',
-        help='internal statistics page address (default "tinyproxy.stats")'
-    )
-    parser.add_argument(
-        '-t', metavar='TINYPROXY', default='127.0.0.1:8888',
-        help='tinyproxy address (default "127.0.0.1:8888")'
-    )
+        '-s',
+        metavar='STATHOST',
+        default='tinyproxy.stats',
+        help='internal statistics page address (default "tinyproxy.stats")')
+    parser.add_argument('-t',
+                        metavar='TINYPROXY',
+                        default='127.0.0.1:8888',
+                        help='tinyproxy address (default "127.0.0.1:8888")')
     return parser.parse_args()
+
 
 def main():
     try:
@@ -53,6 +68,7 @@ def main():
     except KeyboardInterrupt:
         print(' Interrupted')
         sys.exit(0)
+
 
 if __name__ == '__main__':
     main()
