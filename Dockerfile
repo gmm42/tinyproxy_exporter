@@ -6,4 +6,4 @@ RUN pip install -r requirements.txt
 
 COPY tinyproxy_exporter tinyproxy_exporter
 
-CMD ["python", "tinyproxy_exporter"]
+ENTRYPOINT ["python", "tinyproxy_exporter"]
