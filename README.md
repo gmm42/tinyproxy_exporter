@@ -14,7 +14,7 @@ Prometheus exporter for Tinyproxy.
 
 optional arguments:
   -h, --help    show this help message and exit
-  -l LISTEN     address on which to expose metrics (default ":9240")
+  -l LISTEN     address on which to expose metrics (default "127.0.0.1:9240")
   -s STATHOST   internal statistics page address (default "tinyproxy.stats")
   -t TINYPROXY  tinyproxy address (default "127.0.0.1:8888")
 ```
