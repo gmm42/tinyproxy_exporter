@@ -43,8 +43,8 @@ def parse_args():
     parser.add_argument(
         '-l',
         metavar='LISTEN',
-        default=':9240',
-        help='address on which to expose metrics (default ":9240")')
+        default='127.0.0.1:9240',
+        help='address on which to expose metrics (default "127.0.0.1:9240")')
     parser.add_argument(
         '-s',
         metavar='STATHOST',
